@@ -43,19 +43,12 @@ class Event
     private $all_day;
 
     /**
-     * @ORM\Column(type="string", length=7)
+     * @ORM\ManyToOne(targetEntity=CategoryFormation::class, inversedBy="events")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $background_color;
+    private $categoryFormation;
 
-    /**
-     * @ORM\Column(type="string", length=7)
-     */
-    private $border_color;
 
-    /**
-     * @ORM\Column(type="string", length=7)
-     */
-    private $text_color;
 
     public function getId(): ?int
     {
@@ -122,39 +115,18 @@ class Event
         return $this;
     }
 
-    public function getBackgroundColor(): ?string
+    public function getCategoryFormation(): ?CategoryFormation
     {
-        return $this->background_color;
+        return $this->categoryFormation;
     }
 
-    public function setBackgroundColor(string $background_color): self
+    public function setCategoryFormation(?CategoryFormation $categoryFormation): self
     {
-        $this->background_color = $background_color;
+        $this->categoryFormation = $categoryFormation;
 
         return $this;
     }
 
-    public function getBorderColor(): ?string
-    {
-        return $this->border_color;
-    }
 
-    public function setBorderColor(string $border_color): self
-    {
-        $this->border_color = $border_color;
-
-        return $this;
-    }
-
-    public function getTextColor(): ?string
-    {
-        return $this->text_color;
-    }
-
-    public function setTextColor(string $text_color): self
-    {
-        $this->text_color = $text_color;
-
-        return $this;
-    }
 }
+

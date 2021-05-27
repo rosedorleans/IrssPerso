@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\FormationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=FormationRepository::class)
@@ -35,6 +36,7 @@ class Formation
     /**
      * @ORM\ManyToOne(targetEntity=CategoryFormation::class, inversedBy="formations")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
      */
     private $categoryFormation;
 

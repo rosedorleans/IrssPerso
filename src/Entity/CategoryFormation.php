@@ -39,11 +39,17 @@ class CategoryFormation
      */
     private $formations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="categoryFormation")
+     */
+    private $events;
+
 
 
     public function __construct()
     {
         $this->formations = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -116,4 +122,41 @@ class CategoryFormation
 
         return $this;
     }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->setCategoryFormation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->removeElement($event)) {
+            // set the owning side to null (unless already changed)
+            if ($event->getCategoryFormation() === $this) {
+                $event->setCategoryFormation(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
+
+
 }
