@@ -1,0 +1,55 @@
+
+    #calendar {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    body a {
+        color: #19223D;
+    }
+
+    body a:hover {
+        color: #00134d;
+        cursor: pointer;
+    }
+
+    /* FullCalendar */
+    .fc {
+        border: 1px solid #dbdbdb;
+        border-radius: 5px;
+    }
+
+    .fc thead {
+        background-color: #E44F1699 !important;
+    }
+
+    .fc .fc-toolbar-chunk {
+        margin: 5px 0 0 0;
+    }
+
+    .fc .fc-toolbar-title {
+        margin: 10px 0 0 0 !important;
+        padding: 10px;
+        text-transform: capitalize;
+    }
+
+    .fc .fc-button-active {
+        background-color: rgb(110, 60, 50);
+    }
+
+    .fc .fc-button-primary {
+
+        background-color: #E44F16;
+
+    }
+
+    .fc .fc-col-header-cell-cushion {
+        text-decoration: none;
+    }
+
+
+    .fc .fc-day-today {
+        background-color: #E44F1699 !important;
+    }
+
+

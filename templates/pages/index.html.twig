@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page index{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.css" integrity="sha256-r2s/dK+UgUBU0+4kDK93RVTOO5qbzD+XIRJDOxKlTFM=" crossorigin="anonymous">
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const calendarElement = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarElement, {
+                initialView: 'dayGridMonth',
+                locale: 'fr',
+                allDayText: 'Journée entière',
+                timeZone: 'Europe/Paris',
+                weekNumberCalculation: "ISO",
+                dayHeaderFormat: {
+                    weekday: 'short'
+                },
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,listWeek'
+                },
+                events: {{ data|raw }}
+            });
+            calendar.render();
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="my-4 text-center">
+        <h1>Calendrier</h1>
+        <a href="{{ path('calendar_index') }}">Base de données</a>
+    </div>
+    <div id="calendar" class="col-8 mx-auto"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js" integrity="sha256-vB0AxkwD8fMGdgwuIfLl+VhH2pFA0ZtJdAJe4OHRKcs=" crossorigin="anonymous"></script>
+
+{% endblock %}

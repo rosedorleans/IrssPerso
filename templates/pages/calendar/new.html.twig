@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Calendar{% endblock %}
+
+{% block body %}
+    <h1 class="col-8 mx-auto py-4 text-center">Nouvel évènement</h1>
+    <div class="col-6 mx-auto">
+
+        {{ include('pages/calendar/_form.html.twig') }}
+
+        <a href="{{ path('calendar_index') }}">back to list</a>
+    </div>
+
+{% endblock %}
