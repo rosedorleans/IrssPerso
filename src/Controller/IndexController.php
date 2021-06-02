@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryFormationRepository;
 use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,7 @@ class IndexController extends AbstractController
      * @Route(path="", name="index")
      * @return Response
      */
-    public function index(EventRepository $calendar): Response
+    public function index(EventRepository $calendar, categoryFormationRepository $categoryFormationRepository): Response
     {
         $events = $calendar->findAll();
 
@@ -33,15 +34,18 @@ class IndexController extends AbstractController
                 'end' => $event->getEnd()->format('Y-m-d H:i:s'),
                 'title' => $event->getTitle(),
                 'description' => $event->getDescription(),
-                'background_color' => $event->getBackgroundColor(),
-                'border_color' => $event->getBorderColor(),
-                'text_color' => $event->getTextColor(),
+                'color' => $event->getCategoryFormation()->getColor(),
                 'allDay' => $event->getAllDay(),
             ];
+
         }
+        $categories = $categoryFormationRepository->findAll();
         $data = json_encode($rendezvous);
 
-        return $this->render('pages/index.html.twig', compact('data'));
+        return $this->render('pages/index.html.twig',  [
+            'events' => $events,
+            'data' => $data
+        ]);
     }
 
 }

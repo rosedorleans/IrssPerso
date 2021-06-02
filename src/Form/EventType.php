@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\CategoryFormation;
 use App\Entity\Event;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -25,22 +26,24 @@ class EventType extends AbstractType
             ])
             ->add('description')
             ->add('all_day')
-            ->add('categoryFormation', entityType::class, [
-                'class' => 'App\Entity\CategoryFormation',
-                'placeholder' =>'Select a category',
-                'mapped' => false,
+            ->add('categoryFormation', EntityType::class, [
+                'class' => CategoryFormation::class,
+                'choice_label' => 'title',
+                'placeholder' =>'-- Select a category --',
+                'required' => true
             ])
         ;
 
-        $builder->get('category')->addEventListener(
+        $builder->get('categoryFormation')->addEventListener(
             FormEvents::PRE_SUBMIT,
             function(FormEvent $event) {
                 $form = $event->getForm();
-                $form->add('categoryFormation', EntityType::class, [
-                    'class' =>'App\Entity\CategoryFormation',
-                    'placeholder' => 'Select a category',
-
-                ]);
+                dump($form);
+            //    $form->add('categoryFormation', EntityType::class, [
+                //        'class' =>'App\Entity\CategoryFormation',
+                //        'placeholder' => 'Select a category',
+                //        'choices' => $form->getData()->getCategoryFormation();
+                //    ]);
             }
         );
     }

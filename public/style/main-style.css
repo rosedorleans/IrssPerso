@@ -15,12 +15,13 @@
 
     /* FullCalendar */
     .fc {
+        padding : 2%;
         border: 1px solid #dbdbdb;
         border-radius: 5px;
     }
 
     .fc thead {
-        background-color: #E44F1699 !important;
+        background-color: #E44F1660 !important;
     }
 
     .fc .fc-toolbar-chunk {
@@ -49,7 +50,8 @@
 
 
     .fc .fc-day-today {
-        background-color: #E44F1699 !important;
+        background-color: #E44F1660 !important;
     }
+
 
 

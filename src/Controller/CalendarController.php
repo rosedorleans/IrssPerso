@@ -21,6 +21,7 @@ class CalendarController extends AbstractController
      */
     public function index(EventRepository $calendarRepository): Response
     {
+
         return $this->render('pages/calendar/index.html.twig', [
             'calendars' => $calendarRepository->findAll(),
         ]);
@@ -40,7 +41,10 @@ class CalendarController extends AbstractController
             $entityManager->persist($calendar);
             $entityManager->flush();
 
+
+
             return $this->redirectToRoute('calendar_index');
+
         }
 
         return $this->render('pages/calendar/new.html.twig', [
