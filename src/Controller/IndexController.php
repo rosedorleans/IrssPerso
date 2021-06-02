@@ -26,9 +26,9 @@ class IndexController extends AbstractController
     {
         $events = $calendar->findAll();
 
-        $rendezvous = [];
+        $allEvents = [];
         foreach ($events as $event) {
-            $rendezvous[] = [
+            $allEvents[] = [
                 'id' => $event->getId(),
                 'start' => $event->getStart()->format('Y-m-d H:i:s'),
                 'end' => $event->getEnd()->format('Y-m-d H:i:s'),
@@ -37,10 +37,8 @@ class IndexController extends AbstractController
                 'color' => $event->getCategoryFormation()->getColor(),
                 'allDay' => $event->getAllDay(),
             ];
-
         }
-        $categories = $categoryFormationRepository->findAll();
-        $data = json_encode($rendezvous);
+        $data = json_encode($allEvents);
 
         return $this->render('pages/index.html.twig',  [
             'events' => $events,

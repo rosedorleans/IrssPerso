@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * @Route("/calendar")
@@ -41,8 +42,6 @@ class CalendarController extends AbstractController
             $entityManager->persist($calendar);
             $entityManager->flush();
 
-
-
             return $this->redirectToRoute('calendar_index');
 
         }
@@ -55,6 +54,7 @@ class CalendarController extends AbstractController
 
     /**
      * @Route("/{id}", name="calendar_show", methods={"GET"})
+     * 
      */
     public function show(Event $calendar): Response
     {
