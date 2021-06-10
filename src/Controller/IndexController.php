@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class HomeController
  * @package App\Controller
- * @Route(name="home_")
+ * @Route(name="event_")
  */
 class IndexController extends AbstractController
 {
@@ -23,9 +23,9 @@ class IndexController extends AbstractController
      * @Route("", name="index", methods={"GET"})
      * @return Response
      */
-    public function index(EventRepository $calendarRepository): Response
+    public function index(EventRepository $eventRepository): Response
     {
-        $events = $calendarRepository->findAll();
+        $events = $eventRepository->findAll();
 
         $allEvents = [];
         foreach ($events as $event) {
@@ -47,28 +47,32 @@ class IndexController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/event/{id}", name="event_show", methods={"GET"})
+     * @Route("/event/{id}", name="show", methods={"GET"})
      *
      */
-    public function show(Event $calendar): Response
+    public function show(Event $event): Response
     {
         return $this->render('pages/eventShow.html.twig', [
-            'calendar' => $calendar,
+            'event' => $event,
         ]);
     }
-
 
     /**
-     * @Route("/filters", name="filters", methods={"GET"})
+     * @Route("/filters", name="filters")
      *
      */
-    public function filters(Event $calendar): Response
+    public function filters(EventRepository $eventRepository): Response
     {
+        $allEvents = $eventRepository->findAll();
+
         return $this->render('pages/filters.html.twig', [
-            'calendar' => $calendar,
+            'allEvents' => $allEvents,
         ]);
     }
+
+
 
 
 }

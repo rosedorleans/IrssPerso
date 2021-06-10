@@ -24,6 +24,10 @@ class City
      */
     private $name;
 
+
+
+
+
     /**
      * @ORM\OneToMany(targetEntity=Event::class, mappedBy="city")
      */

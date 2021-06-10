@@ -5,24 +5,24 @@
 {% block body %}
 
     <div>
-        <h1>{{ calendar.title }} - {{ calendar.start ? calendar.start|date|format_date('full', locale='fr') }}</h1>
-        <p>{{ calendar.description }}</p>
+        <h1>{{ event.title }} - {{ event.start ? event.start|date|format_date('full', locale='fr') }}</h1>
+        <p>{{ event.description }}</p>
         <div>
             <h2>Date</h2>
             <ul>
-                <li>{{ calendar.start ? calendar.start|date|format_date('full', locale='fr') }}</li>
+                <li>{{ event.start ? event.start|date|format_date('full', locale='fr') }}</li>
                 <li>
-                    {{ calendar.start ? calendar.start|date|format_datetime('none', 'short', locale='fr')}}
+                    {{ event.start ? event.start|date|format_datetime('none', 'short', locale='fr')}}
                     -
-                    {{ calendar.end ? calendar.end|date|format_datetime('none', 'short', locale='fr') }}
+                    {{ event.end ? event.end|date|format_datetime('none', 'short', locale='fr') }}
                 </li>
             </ul>
             <h2>Lieu</h2>
-            <p>{{ calendar.place}}</p>
+            <p>{{ event.place}}</p>
         </div>
     </div>
 
-    <a href="{{ path('home_index') }}">Retour aux dates clés</a>
+    <a href="{{ path('event_index') }}">Retour aux dates clés</a>
 
 
 {% endblock %}

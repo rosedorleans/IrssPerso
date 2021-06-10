@@ -58,6 +58,17 @@ class Event
      */
     private $city;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=City::class, inversedBy="Cities")
+     */
+    private $city2;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=City::class, inversedBy="Cities")
+     */
+    private $city3;
+
+
 
 
     public function getId(): ?int
@@ -159,6 +170,30 @@ class Event
         return $this;
     }
 
+
+    public function getCity2(): ?City
+    {
+        return $this->city;
+    }
+
+    public function setCity2(?City $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCity3(): ?City
+    {
+        return $this->city;
+    }
+
+    public function setCity3(?City $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
 
 }
 
