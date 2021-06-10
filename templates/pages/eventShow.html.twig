@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendar{% endblock %}
+
+{% block body %}
+
+    <div>
+        <h1>{{ calendar.title }} - {{ calendar.start ? calendar.start|date|format_date('full', locale='fr') }}</h1>
+        <p>{{ calendar.description }}</p>
+        <div>
+            <h2>Date</h2>
+            <ul>
+                <li>{{ calendar.start ? calendar.start|date|format_date('full', locale='fr') }}</li>
+                <li>
+                    {{ calendar.start ? calendar.start|date|format_datetime('none', 'short', locale='fr')}}
+                    -
+                    {{ calendar.end ? calendar.end|date|format_datetime('none', 'short', locale='fr') }}
+                </li>
+            </ul>
+            <h2>Lieu</h2>
+            <p>{{ calendar.place}}</p>
+        </div>
+    </div>
+
+    <a href="{{ path('home_index') }}">Retour aux dates clés</a>
+
+
+{% endblock %}

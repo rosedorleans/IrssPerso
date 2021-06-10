@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Event;
 use App\Repository\CategoryFormationRepository;
 use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,12 +20,12 @@ class IndexController extends AbstractController
 {
 
     /**
-     * @Route(path="", name="index")
+     * @Route("", name="index", methods={"GET"})
      * @return Response
      */
-    public function index(EventRepository $calendar, categoryFormationRepository $categoryFormationRepository): Response
+    public function index(EventRepository $calendarRepository): Response
     {
-        $events = $calendar->findAll();
+        $events = $calendarRepository->findAll();
 
         $allEvents = [];
         foreach ($events as $event) {
@@ -41,9 +42,33 @@ class IndexController extends AbstractController
         $data = json_encode($allEvents);
 
         return $this->render('pages/index.html.twig',  [
-            'events' => $events,
+            'calendarEvents' => $events,
             'data' => $data
         ]);
     }
+
+    /**
+     * @Route("/event/{id}", name="event_show", methods={"GET"})
+     *
+     */
+    public function show(Event $calendar): Response
+    {
+        return $this->render('pages/eventShow.html.twig', [
+            'calendar' => $calendar,
+        ]);
+    }
+
+
+    /**
+     * @Route("/filters", name="filters", methods={"GET"})
+     *
+     */
+    public function filters(Event $calendar): Response
+    {
+        return $this->render('pages/filters.html.twig', [
+            'calendar' => $calendar,
+        ]);
+    }
+
 
 }

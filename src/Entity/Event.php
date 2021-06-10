@@ -38,6 +38,11 @@ class Event
     private $description;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $place;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private $all_day;
@@ -47,6 +52,11 @@ class Event
      * @ORM\JoinColumn(nullable=false)
      */
     private $categoryFormation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=City::class, inversedBy="Cities")
+     */
+    private $city;
 
 
 
@@ -103,6 +113,16 @@ class Event
         return $this;
     }
 
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    public function setPlace($place): void
+    {
+        $this->place = $place;
+    }
+
     public function getAllDay(): ?bool
     {
         return $this->all_day;
@@ -123,6 +143,18 @@ class Event
     public function setCategoryFormation(?CategoryFormation $categoryFormation): self
     {
         $this->categoryFormation = $categoryFormation;
+
+        return $this;
+    }
+
+    public function getCity(): ?City
+    {
+        return $this->city;
+    }
+
+    public function setCity(?City $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }

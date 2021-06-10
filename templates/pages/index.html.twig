@@ -7,7 +7,7 @@
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css'>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css'>
     <style>
-        {% for event in events %}
+        {% for event in calendarEvents %}
             .fc-daygrid-event-dot { border: 4px solid {{ event.categoryFormation.color }}; }
             .fc-list-event-dot { border: 4px solid {{ event.categoryFormation.color }}; }
             .fc-h-event { border: 1px solid {{ event.categoryFormation.color }};
@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script>
+    <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
             const calendarElement = document.getElementById('calendar');
             const calendar = new FullCalendar.Calendar(calendarElement, {
@@ -37,12 +37,12 @@
                     end: 'dayGridMonth,listMonth'
                 },
                 events: {{ data|raw }},
-                eventClick: function(calEvent, jsEvent, view) {
-                    window.location = "/calendar/" + 
-                    {% for event in events %} 
-                        {{event.id}}
-                    {% endfor %}
-                }
+                eventClick: function(eventInfos) {
+                    const eventObject = eventInfos.event;
+                    if (eventObject.id) {
+                        window.location = "/event/" + eventObject.id;
+                    }
+                },
             });
             calendar.render();
         });
@@ -51,14 +51,12 @@
 
 {% block body %}
     <div class="my-4 text-center">
-        <h1>Calendrier</h1>
-        <a href="{{ path('calendar_index') }}">Base de données</a>
+        <h1>Les dates clés</h1>
+        <a href="{{ path('home_filters') }}">Filtrer</a>
     </div>
     <div class="col-10 mx-auto">
-        <div id="calendar" class="mb-4"></div>
+        <div class="mb-4" id="calendar"></div>
     </div>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js" integrity="sha256-vB0AxkwD8fMGdgwuIfLl+VhH2pFA0ZtJdAJe4OHRKcs=" crossorigin="anonymous"></script>
 
