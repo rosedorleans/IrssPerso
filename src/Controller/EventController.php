@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\Event;
+use App\Form\SearchType;
 use App\Repository\CategoryFormationRepository;
 use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @Route(name="event_")
  */
-class IndexController extends AbstractController
+class EventController extends AbstractController
 {
 
     /**
@@ -65,10 +67,12 @@ class IndexController extends AbstractController
      */
     public function filters(EventRepository $eventRepository): Response
     {
+        $data = new SearchData();
+        $form = $this->createForm(SearchType::class, $data);
         $allEvents = $eventRepository->findAll();
-
         return $this->render('pages/filters.html.twig', [
             'allEvents' => $allEvents,
+            'form' => $form->createView()
         ]);
     }
 

@@ -6,10 +6,17 @@
 
     <div class="container">
         <h1>Filtrer</h1>
-        <div class="grid">
-            {% for event in allEvents %}
-                {% include 'pages/_card.html.twig' with {event: event} only %}
-            {% endfor %}
+        <div class="row">
+            <div class="col-md-3">
+                {% include 'pages/event/_filter.html.twig' with {form: form} only %}
+            </div>
+            <div class="col-md-9">
+                <div class="grid">
+                    {% for event in allEvents %}
+                        {% include 'pages/event/_card.html.twig' with {event: event} only %}
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 

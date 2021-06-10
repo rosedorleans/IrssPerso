@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+
+    {{ form_row(form.search) }}
+    <p>Catégories :</p>
+    {{ form_row(form.categories, { 'attr': {'class': 'form-categories'} }) }}
+    <p>Ecoles :</p>
+    {{ form_row(form.cities, { 'attr': {'class': 'form-cities'} }) }}
+
+{{ form_end(form) }}
+
