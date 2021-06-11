@@ -64,6 +64,12 @@
         grid-gap: 20px;
     }
 
+    .filters {
+        display: block;
+        position: sticky;
+        top: 20px;
+    }
+
     .form-categories {
         margin-bottom: 20px;
     }
