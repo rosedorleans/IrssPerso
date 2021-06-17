@@ -65,11 +65,12 @@ class EventController extends AbstractController
      * @Route("/filters", name="filters")
      *
      */
-    public function filters(EventRepository $eventRepository): Response
+    public function filters(EventRepository $eventRepository, Request $request): Response
     {
         $data = new SearchData();
         $form = $this->createForm(SearchType::class, $data);
-        $allEvents = $eventRepository->findAll();
+        $form->handleRequest($request);
+        $allEvents = $eventRepository->findSearch($data);
         return $this->render('pages/filters.html.twig', [
             'allEvents' => $allEvents,
             'form' => $form->createView()

@@ -5,7 +5,6 @@
     }
 
     body a {
-        color: blue;
         color: #19223D;
     }
 
@@ -58,20 +57,50 @@
 
     /* Filtres */
 
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 20px;
+    .filters-menu {
+        margin: 20px 0 50px;
+        text-align : center;
     }
 
-    .filters {
+    #filters h2 {
+        font-size: 20px;
+    }
+
+    #filters .filters-title {
+        margin: 30px 0 20px;
+        text-decoration: underline;
+    }
+
+    #filters #card-title:before {
+        content: "\"";
+    }
+
+    #filters #card-title:after {
+        content: "\"";
+    }
+
+    .filters-list {
         display: block;
         position: sticky;
         top: 20px;
     }
 
-    .form-categories {
+    #search {
         margin-bottom: 20px;
+    }
+
+    #cities {
+        margin-bottom: 30px;
+    }
+
+    #filters-btn {
+        margin-bottom: 50px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
     }
 
 

@@ -4,13 +4,16 @@
 
 {% block body %}
 
-    <div class="container">
-        <h1>Filtrer</h1>
+    <div class="container" id="filters">
+        <div class="filters-menu">
+            <h1>Filtrer les événements</h1>
+            <a href="{{ path('event_index') }}">Retour aux dates clés</a>
+        </div>
         <div class="row">
             <div class="col-md-3">
                 {% include 'pages/event/_filter.html.twig' with {form: form} only %}
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9" id="filters-cards">
                 <div class="grid">
                     {% for event in allEvents %}
                         {% include 'pages/event/_card.html.twig' with {event: event} only %}
@@ -20,7 +23,7 @@
         </div>
     </div>
 
-    <a href="{{ path('event_index') }}">Retour aux dates clés</a>
+
 
 
 {% endblock %}

@@ -1,13 +1,20 @@
 
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title">{{ event.title }}</h2>
+            <h2 class="card-title" id="card-title">{{ event.title }}</h2>
             <p class="card-title">
                 {{ event.start ? event.start|date|format_date('full', locale='fr') }}
             </p>
             <p class="card-title">
                 {{ event.start ? event.start|date|format_datetime('none', 'short', locale='fr')}}
             </p>
+            <div>
+                {% for category in event.categoryFormation %}
+                    <em class="text-muted text-primary text-italic">
+                        #{{ category.title }}
+                    </em>
+                {% endfor %}
+            </div>
         </div>
     </div>
 

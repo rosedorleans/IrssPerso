@@ -1,10 +1,12 @@
-{{ form_start(form, { 'attr': {'class': 'filters'} }) }}
+{{ form_start(form, { 'attr': {'class': 'filters-list'} }) }}
 
     {{ form_row(form.search) }}
-    <p>Catégories :</p>
+    <h2 class="filters-title">Catégories :</h2>
     {{ form_row(form.categories, { 'attr': {'class': 'form-categories'} }) }}
-    <p>Ecoles :</p>
+    <h2 class="filters-title">Ecoles :</h2>
     {{ form_row(form.cities, { 'attr': {'class': 'form-cities'} }) }}
+
+    <button type="submit" class="btn btn-primary w-100" id="filters-btn">Filtrer</button>
 
 {{ form_end(form) }}
 
