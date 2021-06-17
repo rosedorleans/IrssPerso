@@ -16,13 +16,14 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class HomeController
  * @package App\Controller
- * @Route(name="event_")
+ * @Route("", name="event_")
  */
 class EventController extends AbstractController
 {
 
     /**
-     * @Route("", name="index", methods={"GET"})
+     * @param EventRepository $eventRepository
+     * @Route("/calendar", name="calendar")
      * @return Response
      */
     public function index(EventRepository $eventRepository): Response
@@ -43,7 +44,7 @@ class EventController extends AbstractController
         }
         $data = json_encode($allEvents);
 
-        return $this->render('pages/index.html.twig',  [
+        return $this->render('pages/calendar.html.twig',  [
             'calendarEvents' => $events,
             'data' => $data
         ]);
@@ -54,9 +55,11 @@ class EventController extends AbstractController
      * @Route("/event/{id}", name="show", methods={"GET"})
      *
      */
-    public function show(Event $event): Response
+    public function show(Event $event, EventRepository $eventRepository): Response
     {
+        $allEvents = $eventRepository->findAll();
         return $this->render('pages/eventShow.html.twig', [
+            'allEvents' => $allEvents,
             'event' => $event,
         ]);
     }

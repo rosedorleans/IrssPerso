@@ -2,10 +2,19 @@
 
 {% block title %}Calendar{% endblock %}
 
+{% block stylesheets %}
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css'>
+    <style>
+        {% for event in allEvents %}
+            h1 u { text-decoration-color: {{ event.categoryFormation.color }}; }}
+        {% endfor %}
+    </style>
+{% endblock %}
+
 {% block body %}
 
     <div>
-        <h1>{{ event.title }} - {{ event.start ? event.start|date|format_date('full', locale='fr') }}</h1>
+        <h1><u>{{ event.title }}</u> - {{ event.start ? event.start|date|format_date('full', locale='fr') }}</h1>
         <p>{{ event.description }}</p>
         <div>
             <h2>Date</h2>
@@ -22,7 +31,7 @@
         </div>
     </div>
 
-    <a href="{{ path('event_index') }}">Retour aux dates clés</a>
+    <a href="{{ path('event_calendar') }}">Retour aux dates clés</a>
 
 
 {% endblock %}

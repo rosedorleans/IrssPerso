@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
- * @Route("/calendar")
+ * @Route("/calendarBDD")
  */
 class CalendarController extends AbstractController
 {
@@ -23,7 +23,7 @@ class CalendarController extends AbstractController
     public function index(EventRepository $calendarRepository): Response
     {
 
-        return $this->render('pages/calendar/index.html.twig', [
+        return $this->render('pages/calendar/calendar.html.twig', [
             'calendars' => $calendarRepository->findAll(),
         ]);
     }
