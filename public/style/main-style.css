@@ -1,12 +1,221 @@
 
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+}
+
+/* Menu */
+
+#header-bar {
+    background-color: #19223D;
+    height: 60px;
+    width: 100%;
+    padding-top: 35px;
+    text-align: center;
+}
+
+.menu-btn{
+    color:#FFF;
+    background:rgba(0, 0, 0, 0.5);
+    padding:10px 20px;
+    font-size:12px;
+    text-decoration:none;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.menu-btn:hover{
+    border:none;
+    background:rgba(0, 0, 0, 0.4);
+    background:#fff;
+    padding:20px 20px;
+    color:#1b1b1b;
+}
 
 
 /* Map */
 
-    .map-image {
-        width: 50%;
-        float: right;
+    .map {
+        overflow: hidden;
+        margin: 10% 0 0 5%;
     }
+
+        .map-text {
+            width: 30%;
+            margin-top: 55px;
+            float: left;
+        }
+
+        .map-text h1 {
+            text-decoration: underline;
+            text-decoration-color: #e44f16;
+        }
+
+            .map-text a {
+                color: #19223D;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .map-text a.is-active {
+                    color: #E44F16 !important;
+                    text-decoration: underline;
+                    font-weight: bold;
+                }
+
+        .map-image {
+            width: 70%;
+            float: left;
+        }
+
+            .map-image ellipse {
+                cursor: pointer;
+                transition: fill 0.3s;
+            }
+
+                /*.map-image ellipse:hover {*/
+                /*    fill: #FFF !important;*/
+                /*    transition: fill 0.3s;*/
+                /*}*/
+
+                .map-image a.is-active ellipse {
+                    fill: #FFF !important;
+                    transition: fill 0.3s;
+                }
+
+
+            .cities-name {
+                color: #FFF;
+                font-size: 17px;
+            }
+
+                #angers-city-name {
+                    position: relative;
+                    bottom: 585px;
+                    left: 236px;
+                }
+
+                #brest-city-name {
+                    position: relative;
+                    bottom: 585px;
+                    left: 236px;
+                }
+
+                #bordeaux-city-name {
+                    position: relative;
+                    bottom: 585px;
+                    left: 236px;
+                }
+
+                #caen-city-name {
+                    position: relative;
+                    bottom: 585px;
+                    left: 236px;
+                }
+
+                #cholet-city-name {
+                    position: relative;
+                    bottom: 585px;
+                    left: 236px;
+                }
+
+                #le-mans-city-name {
+                    position: relative;
+                    bottom: 585px;
+                    left: 236px;
+                }
+
+                #nantes-city-name {
+                    position: relative;
+                    bottom: 585px;
+                    left: 236px;
+                }
+
+                #sables-olonne-city-name {
+                    position: relative;
+                    bottom: 585px;
+                    left: 236px;
+                }
+
+                #poitiers-city-name {
+                    position: relative;
+                    bottom: 585px;
+                    left: 236px;
+                }
+
+                #rennes-city-name {
+                    position: relative;
+                    bottom: 585px;
+                    left: 236px;
+                }
+
+                #royan-city-name {
+                    position: relative;
+                    bottom: 585px;
+                    left: 236px;
+                }
+
+                #tours-city-name {
+                    position: relative;
+                    bottom: 585px;
+                    left: 236px;
+                }
+
+                /*  Zone pour effacer les regions
+                  (ajouter les identifiants des régions ici) */
+
+                #FR-HDF, #FR-GES, #FR-ARA, #FR-BFC, #FR-IDF, #FR-OCC, #FR-PAC {
+                    fill: #19223d1f !important;
+                }
+
+                /*  Zone pour effacer les regions
+                  (ajouter les identifiants des régions ici) */
+
+                #FR-COR {
+                    display: none;
+                }
+
+
+    /* Modal villes */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 15%;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    /* contenu du modal */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: solid #19223d;
+        border-radius: 15px;
+        width: 30%;
+    }
+
+    /* bouton close */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
 
 
     #calendar {
