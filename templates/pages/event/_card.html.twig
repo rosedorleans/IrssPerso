@@ -9,7 +9,7 @@
                 {{ event.start ? event.start|date|format_datetime('none', 'short', locale='fr')}}
             </p>
             <div>
-                {% for category in event.categoryFormation %}
+                {% for category in allCategories %}
                     <em class="text-muted text-primary text-italic">
                         #{{ category.title }}
                     </em>

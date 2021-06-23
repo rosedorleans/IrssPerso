@@ -270,6 +270,26 @@ h1 {
 
 
 
+    /*Page Calendrier*/
+
+    #calendar-box {
+        width: 70%;
+    }
+
+    @media only screen and (max-width : 1000px){
+
+        #calendar-box {
+            width: 80%;
+        }
+    }
+
+    @media only screen and (max-width : 850px){
+
+        #calendar-box {
+            width: 90%;
+        }
+    }
+
     #calendar {
         width: 100%;
         margin: 0 auto;
