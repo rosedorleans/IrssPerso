@@ -8,14 +8,16 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css'>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css'>
         {% block stylesheets %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </head>
     <body>
         <header>
             <nav id="header-bar">
-                <a href="#" class="menu-btn">Home</a>
-                <a href="#" class="menu-btn">Calendrier</a>
+                <a href="{{ path('home_home') }}" class="menu-btn">Home</a>
+                <a href="{{ path('event_calendar') }}" class="menu-btn">Calendrier</a>
                 <a href="#" class="menu-btn">A Propos</a>
             </nav>
         </header>
