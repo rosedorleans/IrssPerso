@@ -1,0 +1,64 @@
+
+
+- Dans le SVG -
+
+
+
+Zone Régions :
+
+Constitue les formes représentant les régions de la carte.
+Si on veut que la région ai une couleur grise :
+    - remplacer la balise style du <path> par style="fill:#19223d1f;fill-opacity:1"
+Si on veut que la région ai une couleur bleue :
+    - remplacer la balise style du <path> par style="fill:#19223d;fill-opacity:1"
+Si on veut que la région disparaisse de la carte :
+    - remplacer la balise style du <path> par style="fill:#19223d;fill-opacity:1;display:none"
+Inutile de modifier le reste des balises
+
+
+
+
+Zone Lignes séparant les régions :
+
+Constitue les lignes blanches séparant les régions.
+Inutile de modifier
+
+
+
+
+Zone Point villes :
+
+Constitue les points oranges qui représentent les villes.
+Pour en ajouter une :
+    - copier la balise <g></g> entièrement et la coller à la fin de la zone Points villes,
+    - remplacer l'id du <g> par "g[nouvel id]"
+    - remplacer l'id du <a> par "btn-[nom de la ville]"
+    - remplacer l'id de l' <ellipse> par "[nom de la ville]-mark"
+    - remplacer le cx par la donnée de position horizontale voulue sur la carte
+    - remplacer le cy par la donnée de position verticale voulue sur la carte
+Si on veut changer la taille du point, modifier les données rx et ry
+Ne pas toucher au reste
+
+
+
+
+Zone Noms des villes :
+
+Constitue les zones de texte où on écrit le nom des villes.
+Pour en ajouter une :
+    - copier la balise <text></text> entièrement et la coller à la fin de la zone Noms des villes,
+    - remplacer l'id du <text> par "text[nouvel id]"
+    - remplacer l'id du <tspan> par "tspan[nouvel id]"
+    - remplacer le nom de la ville dans le <tspan>
+    - remplacer le x dans le <text> par la donnée de position horizontale voulue sur la carte
+    - remplacer le y dans le <text> par la donnée de position verticale voulue sur la carte
+    - remplacer le x dans le <tspan> par la donnée de position horizontale voulue sur la carte
+    - remplacer le y dans le <tspan> par la donnée de position verticale voulue sur la carte
+
+
+
+
+
+- Dans le CSS -
+
+Dans le CSS "style.css" du thème, il y a la taille de la carte et ses tailles responsive

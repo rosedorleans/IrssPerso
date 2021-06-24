@@ -1,0 +1,141 @@
+.map {
+    overflow: hidden;
+    margin: 3% 6%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.map-text {
+    width: 30%;
+    margin-top: 3%;
+    float: left;
+}
+
+.map-text a {
+    color: #19223D;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.map-text a.is-active {
+    color: #E44F16 !important;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.map-image {
+    width: 45%;
+    float: left;
+}
+
+@media only screen and (max-width : 1400px){
+
+    .map {
+        margin: 5% 6%;
+    }
+
+    .map-image {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width : 1200px){
+
+    .map-image {
+        width: 65%;
+    }
+}
+
+@media only screen and (max-width : 1000px){
+
+    .map {
+        margin: 5% 6%;
+    }
+
+    .map-image {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width : 850px){
+
+    .map {
+        flex-direction: column;
+    }
+
+    .map-text, .map-image {
+        width: 100%;
+    }
+}
+
+.map-image ellipse {
+    cursor: pointer;
+    transition: fill 0.3s;
+}
+
+/*.map-image ellipse:hover {*/
+/*    fill: #FFF !important;*/
+/*    transition: fill 0.3s;*/
+/*}*/
+
+.map-image a.is-active ellipse {
+    fill: #FFF !important;
+    transition: fill 0.3s;
+}
+
+
+/*  Zone pour changer la couleur des regions
+      (ajouter les identifiants des régions ici) */
+
+    #FR-HDF, #FR-GES, #FR-ARA, #FR-BFC, #FR-IDF, #FR-OCC, #FR-PAC {
+        fill: #19223d1f !important;
+    }
+
+/*  Zone pour effacer les regions
+      (ajouter les identifiants des régions ici) */
+
+    #FR-COR {
+        display: none;
+    }
+
+
+/* Modal villes */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 25%;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    /* contenu du modal */
+    .modal-content {
+        background-color: #fefefe !important;
+        margin: auto;
+        padding: 20px;
+        border: solid #19223d !important;
+        border-radius: 15px !important;
+        width: 30% !important;
+    }
+
+    /* bouton close */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }

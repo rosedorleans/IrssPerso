@@ -233,7 +233,7 @@ h1 {
         display: none;
         position: fixed;
         z-index: 1;
-        padding-top: 15%;
+        padding-top: 25%;
         left: 0;
         top: 0;
         width: 100%;
@@ -245,12 +245,12 @@ h1 {
 
     /* contenu du modal */
     .modal-content {
-        background-color: #fefefe;
+        background-color: #fefefe !important;
         margin: auto;
         padding: 20px;
-        border: solid #19223d;
-        border-radius: 15px;
-        width: 30%;
+        border: solid #19223d !important;
+        border-radius: 15px !important;
+        width: 30% !important;
     }
 
     /* bouton close */
