@@ -74,9 +74,10 @@
     transition: fill 0.3s;
 }
 
-/*.map-image ellipse:hover {*/
+/*ellipse:hover {*/
 /*    fill: #FFF !important;*/
 /*    transition: fill 0.3s;*/
+/*    cursor: pointer;*/
 /*}*/
 
 .map-image a.is-active ellipse {

@@ -6,22 +6,6 @@
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 610 590" >
 
-<!--  <foreignObject class="node" x="46" y="22" width="200" height="300">-->
-<!--    <div xmlns="http://www.w3.org/1999/xhtml">-->
-<!--      <div id="modalCaen" class="modal">-->
-<!--        <div class="modal-content">-->
-<!--          <span class="close">X</span>-->
-<!--          <p><b>IRSS Caen</b></p>-->
-<!--          <p>Adresse :-->
-<!--            147 Rue de la Délivrande-->
-<!--            14000 Caen-->
-<!--            Téléphone : <a href="tel:+33231946060">02 31 94 60 60</a></p>-->
-<!--          <a href="https://www.irss.fr/ecoles/irss-caen" target="_blank"><u>www.irss.fr/ecoles/irss-caen</u></a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </foreignObject>-->
-
 <!--  Regions-->
   <g
           id="g49"
@@ -170,13 +154,10 @@
 <!--      Point ville Caen-->
   <g id="g29">
     <a id="btn-caen" href="#" target="_blank">
-    <ellipse
-            style="fill:#e44f16;fill-rule:evenodd;stroke-width:0.870547;fill-opacity:1"
-            id="caen-mark"
-            cx="200.75243"
-            cy="125.8383"
-            rx="5.3691916"
-            ry="5.3300085" />
+    <image href="ellipse.svg"
+           height="12px"
+           y="119"
+           x="195"/>
   </a>
 </g>
 
