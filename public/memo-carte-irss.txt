@@ -2,6 +2,8 @@
 
 - Dans le SVG -
 
+Le fichier SVG doit être ouvert avec un logiciel d'édition de texte (bloc note ou mieux comme visual studio code ou brackets)
+Pour le modifier, se réferer aux annotations à l'intérieur du SVG et àa ce memo
 
 
 Zone Régions :
@@ -37,6 +39,7 @@ Pour en ajouter une :
     - remplacer le cx par la donnée de position horizontale voulue sur la carte
     - remplacer le cy par la donnée de position verticale voulue sur la carte
 Si on veut changer la taille du point, modifier les données rx et ry
+Si on veut changer le lien qui s'ouvre au clic, modifier le href
 Ne pas toucher au reste
 
 
@@ -61,4 +64,4 @@ Pour en ajouter une :
 
 - Dans le CSS -
 
-Dans le CSS "style.css" du thème, il y a la taille de la carte et ses tailles responsive
+Dans le CSS "style.css" du thème astra-irss, il y a la taille de la carte et ses tailles responsive

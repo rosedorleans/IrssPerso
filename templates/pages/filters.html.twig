@@ -20,12 +20,39 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                {% include 'pages/event/_filter.html.twig' with {form: form} only %}
+                {{ form_start(form, { 'attr': {'class': 'filters-list'} }) }}
+
+                {{ form_row(form.search) }}
+                <h2 class="filters-title">Catégories :</h2>
+                {{ form_row(form.categories, { 'attr': {'class': 'form-categories'} }) }}
+                <h2 class="filters-title">Ecoles :</h2>
+                {{ form_row(form.cities, { 'attr': {'class': 'form-cities'} }) }}
+
+                <button type="submit" class="btn btn-primary w-100" id="filters-btn">Filtrer</button>
+
+                {{ form_end(form) }}
             </div>
             <div class="col-md-9" id="filters-cards">
                 <div class="grid">
                     {% for event in allEvents %}
-                        {% include 'pages/event/_card.html.twig' %}
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title" id="card-title">{{ event.title }}</h2>
+                                <p class="card-title">
+                                    {{ event.start ? event.start|date|format_date('full', locale='fr') }}
+                                </p>
+                                <p class="card-title">
+                                    {{ event.start ? event.start|date|format_datetime('none', 'short', locale='fr')}}
+                                </p>
+                                <div>
+                                    {% for category in allCategories %}
+                                        <em class="text-muted text-primary text-italic">
+                                            #{{ category.title }}
+                                        </em>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
                     {% endfor %}
                 </div>
             </div>

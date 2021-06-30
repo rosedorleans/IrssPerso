@@ -27,8 +27,14 @@ class EventRepository extends ServiceEntityRepository
     public function findSearch(SearchData $search): array {
 
         $query = $this
-            ->createQueryBuilder('p');
-//            ->join('p.categories', 'c');
+            ->createQueryBuilder('e')
+            ->select('c', 'e')
+            ->join('e.categoryFormation', 'c');
+//        if (!empty($search->search)) {
+//            $query = $query
+//                ->andWhere('e.title LIKE :search')
+//                ->setParameter('e', "%{$search->search}%");
+//        }
         return $query->getQuery()->getResult();
     }
 

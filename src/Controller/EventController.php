@@ -75,6 +75,7 @@ class EventController extends AbstractController
         $form->handleRequest($request);
         $allEvents = $eventRepository->findSearch($data);
         $categories = $cfRepository->findAll();
+        //$categories = $cfRepository->findAll()->getColor();
         return $this->render('pages/filters.html.twig', [
             'allEvents' => $allEvents,
             'allCategories' => $categories,

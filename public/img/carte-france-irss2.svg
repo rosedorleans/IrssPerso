@@ -153,11 +153,14 @@
 
 <!--      Point ville Caen-->
   <g id="g29">
-    <a id="btn-caen" href="#" target="_blank">
-    <image href="ellipse.svg"
-           height="12px"
-           y="119"
-           x="195"/>
+    <a id="btn-caen" href="https://www.irss.fr/ecoles/irss-caen" target="_blank">
+      <ellipse
+          style="fill:#e44f16;fill-opacity:1;fill-rule:evenodd;stroke-width:0.870547"
+          id="caen-mark"
+          cx="200.75243"
+          cy="125.8383"
+          rx="5.3691916"
+          ry="5.3300085"/>
   </a>
 </g>
 

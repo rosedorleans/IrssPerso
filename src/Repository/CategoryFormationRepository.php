@@ -19,6 +19,8 @@ class CategoryFormationRepository extends ServiceEntityRepository
         parent::__construct($registry, CategoryFormation::class);
     }
 
+
+
     // /**
     //  * @return CategoryFormation[] Returns an array of CategoryFormation objects
     //  */
