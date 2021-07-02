@@ -11,55 +11,23 @@
     <div id="filters">
         <div class="filters-menu">
             <h1>Filtrer les événements</h1>
-            <a href="{{ path('event_calendar') }}">Retour au calendrier</a>
+            <a href="{{ path('event_calendar') }}" class="btn btn-primary">Retour au calendrier</a>
         </div>
-        <div class="legend">
-            <div class="leg-row">
-                <div class="leg-block leg-sport">
-                    <span class="dot"></span>
-                    <p>Sport</p>
-                </div>
-                <div class="leg-block leg-sante">
-                    <span class="dot"></span>
-                    <p>Santé</p>
-                </div>
-                <div class="leg-block leg-social">
-                    <span class="dot"></span>
-                    <p>Social</p>
-                </div>
-                <div class="leg-block leg-etudes-sup">
-                    <span class="dot"></span>
-                    <p>Etudes supérieures</p>
-                </div>
-            </div>
-            <div class="leg-row">
-                <div class="leg-block leg-def-sec">
-                    <span class="dot"></span>
-                    <p>Défense et sécurité</p>
-                </div>
-                <div class="leg-block leg-paramedical">
-                    <span class="dot"></span>
-                    <p>Paramédical</p>
-                </div>
-                <div class="leg-block leg-medical">
-                    <span class="dot"></span>
-                    <p>Médical</p>
-                </div>
-                <div class="leg-block leg-bachelor">
-                    <span class="dot"></span>
-                    <p>Bachelor</p>
-                </div>
-            </div>
-        </div>
+
         <div class="row">
             <div class="col-md-3">
                 {{ form_start(form, { 'attr': {'class': 'filters-list'} }) }}
                 {{ form_row(form.search) }}
-                <h2 class="filters-title">Catégories :</h2>
-                {{ form_row(form.categories, { 'attr': {'class': 'form-categories'} }) }}
-                <h2 class="filters-title">Ecoles :</h2>
-                {{ form_row(form.cities, { 'attr': {'class': 'form-cities'} }) }}
-
+                <div class="row">
+                    <div class="mobile-col">
+                        <h2 class="filters-title">Catégories :</h2>
+                        {{ form_row(form.categories, { 'attr': {'class': 'form-categories'} }) }}
+                    </div>
+                    <div class="mobile-col">
+                        <h2 class="filters-title">Ecoles :</h2>
+                        {{ form_row(form.cities, { 'attr': {'class': 'form-cities'} }) }}
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-primary w-100" id="filters-btn">Filtrer</button>
                 <a href="{{ path('event_filters') }}" class="btn btn-primary w-100">
                     <img src="{{ asset('img/reload.png') }}">
@@ -69,6 +37,44 @@
                 {{ form_end(form) }}
             </div>
             <div class="col-md-9" id="filters-cards">
+                <div class="legend">
+                    <div class="leg-row">
+                        <div class="leg-block leg-sport">
+                            <span class="dot"></span>
+                            <p>Sport</p>
+                        </div>
+                        <div class="leg-block leg-sante">
+                            <span class="dot"></span>
+                            <p>Santé</p>
+                        </div>
+                        <div class="leg-block leg-social">
+                            <span class="dot"></span>
+                            <p>Social</p>
+                        </div>
+                        <div class="leg-block leg-etudes-sup">
+                            <span class="dot"></span>
+                            <p>Etudes sup</p>
+                        </div>
+                    </div>
+                    <div class="leg-row">
+                        <div class="leg-block leg-def-sec">
+                            <span class="dot"></span>
+                            <p>Défense</p>
+                        </div>
+                        <div class="leg-block leg-paramedical">
+                            <span class="dot"></span>
+                            <p>Paramédical</p>
+                        </div>
+                        <div class="leg-block leg-medical">
+                            <span class="dot"></span>
+                            <p>Médical</p>
+                        </div>
+                        <div class="leg-block leg-bachelor">
+                            <span class="dot"></span>
+                            <p>Bachelor</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="grid">
                     {% for event in allEvents %}
                         <div class="card">

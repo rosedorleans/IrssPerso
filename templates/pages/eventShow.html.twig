@@ -6,32 +6,48 @@
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css'>
     <style>
         {% for event in allEvents %}
-            h1 u { text-decoration-color: {{ event.categoryFormation.color }}; }}
+            h1 u {  }}
         {% endfor %}
     </style>
 {% endblock %}
 
 {% block body %}
 
-    <div>
-        <h1><u>{{ event.title }}</u> - {{ event.start ? event.start|date|format_date('full', locale='fr') }}</h1>
+    <div id="event-show">
+        <a href="{{ path('event_calendar') }}">Retour au calendrier</a>
+        <h1>
+            <u style="text-decoration-color: {{ event.categoryFormation.color }};">
+                {{ event.title }}
+            </u>
+            - {{ event.start ? event.start|date|format_date('full', locale='fr') }}
+        </h1>
         <p>{{ event.description }}</p>
         <div>
             <h2>Date</h2>
             <ul>
                 <li>{{ event.start ? event.start|date|format_date('full', locale='fr') }}</li>
-                <li>
-                    {{ event.start ? event.start|date|format_datetime('none', 'short', locale='fr')}}
-                    -
-                    {{ event.end ? event.end|date|format_datetime('none', 'short', locale='fr') }}
-                </li>
+                {% if event.allDay == 0 %}
+                    <li>
+                        {{ event.start ? event.start|date|format_datetime('none', 'short', locale='fr')}}
+                        -
+                        {{ event.end ? event.end|date|format_datetime('none', 'short', locale='fr') }}
+                    </li>
+                {% else %}
+                    <li>Journée entière</li>
+                {% endif %}
             </ul>
             <h2>Lieu</h2>
-            <p>{{ event.place}}</p>
+            <ul>
+                {% for city in event.cities %}
+                    <li>{{ city.name }}</li>
+                {% endfor %}
+            </ul>
+
         </div>
+
     </div>
 
-    <a href="{{ path('event_calendar') }}">Retour aux dates clés</a>
+
 
 
 {% endblock %}
