@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendar{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+
+    <div id="apropos-menu" class="text-center">
+        <h1>A Propos</h1>
+    </div>
+    <div id="apropos-text">
+        <p class="text-center">
+            Stage de deux mois dans l'entreprise IRSS. <br>
+            Du 10 mai au 2 juillet 2021 <br><br>
+            Projet : mise à jour et refonte du site
+            <a href="https://www.irss.fr" class="link" target="_blank">IRSS.fr</a> <br>
+            - Langages : PHP / MySQL / HTML / CSS / Javascript, et CMS Wordpress <br>
+            - Optimisation des sites Web (référencement, UX) <br>
+            - Rédaction des documentations techniques et fonctionnelles
+        </p>
+        <div class="p-3 m-2 border">
+            <p>
+                "J'ai créé une <b>carte interactive</b> au format SVG pour que les utilisateurs puissent cliquer sur les villes de France où se situent les écoles.
+                Un fichier Javascript permet de : <br>
+                - changer la couleur des villes dans le texte et sur la carte au passage de la souris.<br>
+                - afficher un modal au clic de la souris (exemple visible sur Caen)<br><br>
+                J'ai développé un <b>calendrier</b> répertoriant tous les événements des écoles IRSS et j'y ai ajouté une page pour filtrer les événements par type de formation, ville et type d'événement"
+            </p>
+        </div>
+        <p class="text-center" id="ps">
+            Le calendrier n'est pas présent sur le site à ce jour. Un plugin The Event Calendar a été choisi. <br>
+            Ce choix a été fait pour garantir la bonne mise à jour des composants. <br>
+            La carte interactive est présente sur la page d'accueil du site.
+        </p>
+    </div>
+
+{% endblock %}

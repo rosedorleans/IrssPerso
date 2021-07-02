@@ -13,6 +13,7 @@
                     <th>Title</th>
                     <th>Start</th>
                     <th>End</th>
+                    <th>Cities</th>
                     <th>Description</th>
                     <th>All_day</th>
                     <th>Category</th>
@@ -26,12 +27,17 @@
                         <td>{{ calendar.title }}</td>
                         <td>{{ calendar.start ? calendar.start|date('Y-m-d H:i:s') : '' }}</td>
                         <td>{{ calendar.end ? calendar.end|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>
+                            {% for city in calendar.cities %}
+                                {{ city.name }}
+                            {% endfor %}
+                        </td>
                         <td>{{ calendar.description }}</td>
                         <td>{{ calendar.allDay ? 'Yes' : 'No' }}</td>
                         <td>{{ calendar.categoryFormation }}</td>
                         <td>
-                            <a href="{{ path('calendar_show', {'id': calendar.id}) }}">show</a>
-                            <a href="{{ path('calendar_edit', {'id': calendar.id}) }}">edit</a>
+                            <a href="{{ path('calendarBDD_show', {'id': calendar.id}) }}">show</a>
+                            <a href="{{ path('calendarBDD_edit', {'id': calendar.id}) }}">edit</a>
                         </td>
                     </tr>
                 {% else %}
@@ -42,9 +48,9 @@
                 </tbody>
             </table>
         </div>
-        <a href="{{ path('calendar_new') }}">Ajouter un évènement</a>
+        <a href="{{ path('calendarBDD_new') }}">Ajouter un évènement</a>
         <br><br>
-        <a href="{{ path('home_index') }}">Retour calendrier</a>
+        <a href="{{ path('event_calendar') }}">Retour calendrier</a>
 
     </div>
 {% endblock %}

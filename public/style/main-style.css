@@ -228,6 +228,62 @@ h1 {
         cursor: pointer;
     }
 
+    .legend {
+        margin: 20px 0;
+    }
+
+    .leg-row {
+        display: flex;
+        justify-content: center;
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .leg-block {
+        display: flex;
+        margin: 0 10px;
+    }
+
+    .dot {
+        height: 12px;
+        width: 12px;
+        margin: 7px 7px 0 0;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .leg-sport .dot {
+        background-color: #F0AE2C;
+    }
+
+    .leg-sante .dot {
+        background-color: #6CB75D;
+    }
+
+    .leg-social .dot {
+        background-color: #F2916C;
+    }
+
+    .leg-etudes-sup .dot {
+        background-color: #E53C5A;
+    }
+
+    .leg-def-sec .dot {
+        background-color: #005AA0;
+    }
+
+    .leg-paramedical .dot {
+        background-color: #46A6A9;
+    }
+
+    .leg-medical .dot {
+        background-color: #00A5DA;
+    }
+
+    .leg-bachelor .dot {
+        background-color: #6E68AD;
+    }
+
 
 /* FullCalendar */
 
@@ -274,13 +330,17 @@ h1 {
 
     /* Filtres */
 
-    .filters-menu {
-        margin: 20px 0 50px;
-        text-align : center;
+    #filters {
+        margin: 5%;
     }
 
     #filters h2 {
         font-size: 20px;
+    }
+
+    .filters-menu {
+        margin: 20px 0;
+        text-align : center;
     }
 
     #filters .filters-title {
@@ -315,8 +375,14 @@ h1 {
     }
 
     #filters-btn {
-        margin-bottom: 50px;
+        margin-bottom: 20px;
     }
+
+    .filters-list a img {
+        height: 20px;
+        margin: 0 5px 3px;
+    }
+
 
     .grid {
         display: grid;

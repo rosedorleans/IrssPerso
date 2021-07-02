@@ -28,13 +28,28 @@ class EventRepository extends ServiceEntityRepository
 
         $query = $this
             ->createQueryBuilder('e')
-            ->select('c', 'e')
-            ->join('e.categoryFormation', 'c');
-//        if (!empty($search->search)) {
-//            $query = $query
-//                ->andWhere('e.title LIKE :search')
-//                ->setParameter('e', "%{$search->search}%");
-//        }
+            ->select('c', 'e', 'ci')
+            ->join('e.categoryFormation', 'c')
+            ->join('e.cities', 'ci');
+
+        if (!empty($search->search)) {
+            $query = $query
+                ->andWhere('e.title LIKE :search')
+                ->setParameter(':search', "%{$search->search}%");
+        }
+
+        if (!empty($search->categories)) {
+            $query = $query
+                ->andWhere('c.id IN (:categories)')
+                ->setParameter('categories', $search->categories);
+        }
+
+        if (!empty($search->cities)) {
+            $query = $query
+                ->andWhere('ci.id IN (:cities)')
+                ->setParameter('cities', $search->cities);
+        }
+
         return $query->getQuery()->getResult();
     }
 

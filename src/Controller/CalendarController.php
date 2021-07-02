@@ -13,23 +13,23 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
- * @Route("/calendarBDD")
+ * @Route("/calendarBDD", name="calendarBDD_")
  */
 class CalendarController extends AbstractController
 {
     /**
-     * @Route("/", name="calendar_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(EventRepository $calendarRepository): Response
     {
 
-        return $this->render('pages/calendar/calendar.html.twig', [
+        return $this->render('pages/calendar/index.html.twig', [
             'calendars' => $calendarRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="calendar_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -42,7 +42,7 @@ class CalendarController extends AbstractController
             $entityManager->persist($calendar);
             $entityManager->flush();
 
-            return $this->redirectToRoute('calendar_index');
+            return $this->redirectToRoute('calendarBDD_index');
 
         }
 
@@ -53,7 +53,7 @@ class CalendarController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="calendar_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      * 
      */
     public function show(Event $calendar): Response
@@ -64,7 +64,7 @@ class CalendarController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="calendar_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Event $calendar): Response
     {
@@ -74,7 +74,7 @@ class CalendarController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('calendar_index');
+            return $this->redirectToRoute('calendarBDD_index');
         }
 
         return $this->render('pages/calendar/edit.html.twig', [
@@ -84,7 +84,7 @@ class CalendarController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="calendar_delete", methods={"POST"})
+     * @Route("/{id}", name="delete", methods={"POST"})
      */
     public function delete(Request $request, Event $calendar): Response
     {
@@ -94,6 +94,6 @@ class CalendarController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('calendar_index');
+        return $this->redirectToRoute('calendarBDD_index');
     }
 }

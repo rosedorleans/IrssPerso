@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,11 +40,6 @@ class Event
     private $description;
 
     /**
-     * @ORM\Column(type="string")
-     */
-    private $place;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $all_day;
@@ -54,21 +51,16 @@ class Event
     private $categoryFormation;
 
     /**
-     * @ORM\ManyToOne(targetEntity=City::class, inversedBy="Cities")
+     * @ORM\ManyToMany(targetEntity=City::class, inversedBy="events")
      */
-    private $city;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=City::class, inversedBy="Cities")
-     */
-    private $city2;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=City::class, inversedBy="Cities")
-     */
-    private $city3;
+    private $cities;
 
 
+
+    public function __construct()
+    {
+        $this->cities = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -124,15 +116,6 @@ class Event
         return $this;
     }
 
-    public function getPlace()
-    {
-        return $this->place;
-    }
-
-    public function setPlace($place): void
-    {
-        $this->place = $place;
-    }
 
     public function getAllDay(): ?bool
     {
@@ -158,39 +141,26 @@ class Event
         return $this;
     }
 
-    public function getCity(): ?City
+    /**
+     * @return Collection|City[]
+     */
+    public function getCities(): Collection
     {
-        return $this->city;
+        return $this->cities;
     }
 
-    public function setCity(?City $city): self
+    public function addCity(City $city): self
     {
-        $this->city = $city;
+        if (!$this->cities->contains($city)) {
+            $this->cities[] = $city;
+        }
 
         return $this;
     }
 
-
-    public function getCity2(): ?City
+    public function removeCity(City $city): self
     {
-        return $this->city;
-    }
-
-    public function setCity2(?City $city): self
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    public function getCity3(): ?City
-    {
-        return $this->city;
-    }
-
-    public function setCity3(?City $city): self
-    {
-        $this->city = $city;
+        $this->cities->removeElement($city);
 
         return $this;
     }

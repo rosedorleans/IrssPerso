@@ -83,6 +83,15 @@ class EventController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/a-propos", name="a_propos")
+     *
+     */
+    public function a_propos(): Response
+    {
+        return $this->render('pages/a-propos.html.twig');
+    }
+
 
 
 

@@ -24,18 +24,20 @@ class City
      */
     private $name;
 
-
-
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $address;
 
 
     /**
-     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="city")
+     * @ORM\ManyToMany(targetEntity=Event::class, mappedBy="Cities")
      */
-    private $Cities;
+    private $events;
 
     public function __construct()
     {
-        $this->Cities = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -55,38 +57,48 @@ class City
         return $this;
     }
 
-    /**
-     * @return Collection|Event[]
-     */
-    public function getCities(): Collection
+    public function getAddress()
     {
-        return $this->Cities;
+        return $this->address;
     }
 
-    public function addCity(Event $city): self
+    public function setAddress($address): void
     {
-        if (!$this->Cities->contains($city)) {
-            $this->Cities[] = $city;
-            $city->setCity($this);
-        }
-
-        return $this;
+        $this->address = $address;
     }
 
-    public function removeCity(Event $city): self
-    {
-        if ($this->Cities->removeElement($city)) {
-            // set the owning side to null (unless already changed)
-            if ($city->getCity() === $this) {
-                $city->setCity(null);
-            }
-        }
 
-        return $this;
-    }
+
 
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->addCity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->removeElement($event)) {
+            $event->removeCity($this);
+        }
+
+        return $this;
     }
 }

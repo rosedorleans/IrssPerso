@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\CategoryFormation;
+use App\Entity\City;
 use App\Entity\Event;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -23,6 +24,12 @@ class EventType extends AbstractType
             ])
             ->add('end', DateTimeType::class, [
                 'date_widget' => 'single_text'
+            ])
+            ->add('cities', EntityType::class, [
+                'class' => City::class,
+                'expanded' => true,
+                'multiple' => true,
+                'required' => true
             ])
             ->add('description')
             ->add('all_day')
